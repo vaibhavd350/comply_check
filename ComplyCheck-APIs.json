@@ -1,0 +1,843 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ComplyCheck",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/DefaultServer/api/v1/users": {
+      "post": {
+        "summary": "Registration",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "Vaibhav",
+                    "type": "string"
+                  },
+                  "email": {
+                    "example": "vaibhav1@yopmail.com",
+                    "type": "string"
+                  },
+                  "password": {
+                    "example": "123456",
+                    "type": "string"
+                  },
+                  "password_conformation": {
+                    "example": "123456",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/users/sign_in": {
+      "post": {
+        "summary": "Signin",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "vaibhav1@yopmail.com",
+                    "type": "string"
+                  },
+                  "password": {
+                    "example": "123456",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/users/sign_out": {
+      "delete": {
+        "summary": "Sign-Out",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJ3NGQ3dk1GZWdDQlVwamJzTGtNYzRRIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IldMSU80U0NYYm5RN1hqQ0xFaWtXSXciLCJleHBpcnkiOiIxNzE4MTkwOTQ2IiwidWlkIjoidmFpYmhhdkB5b3BtYWlsLmNvbSJ9",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/companies": {
+      "post": {
+        "summary": "Create Company",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJNMk9qaW02QjlnNUd6VlRIVzZSd3FRIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IjJpQWppdnBUUkppSXJCS2VzbkJadnciLCJleHBpcnkiOiIxNzE4MjE0ODExIiwidWlkIjoidmFpYmhhdjFAeW9wbWFpbC5jb20ifQ==",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "company[legal_name]": {
+                    "example": "Hitachi",
+                    "type": "string"
+                  },
+                  "company[address]": {
+                    "example": [
+                      "Indore"
+                    ],
+                    "type": "array"
+                  },
+                  "company[email]": {
+                    "example": "hitachigmail.com",
+                    "type": "string"
+                  },
+                  "company[phone_number]": {
+                    "example": [
+                      "7225881811"
+                    ],
+                    "type": "array"
+                  },
+                  "company[primary_contact_name]": {
+                    "example": "John Duo",
+                    "type": "string"
+                  },
+                  "company[primary_contact_phone_number]": {
+                    "example": "123456789",
+                    "type": "string"
+                  },
+                  "company[directors_attributes][0][name]": {
+                    "example": [
+                      "Prashant"
+                    ],
+                    "type": "array"
+                  },
+                  "company[directors_attributes][0][designation]": {
+                    "example": "ROR Developer",
+                    "type": "string"
+                  },
+                  "company[directors_attributes][0][contact_information]": {
+                    "example": "7225881811",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][name]": {
+                    "example": "Certificate of Incorporation",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][document_type]": {
+                    "example": "PDF",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][file]": {
+                    "format": "binary",
+                    "type": "string",
+                    "example": "file:///home/atm/Downloads/Test-PDF.pdf"
+                  },
+                  "company[documents_attributes][1][name]": {
+                    "example": "GST certificate",
+                    "type": "array"
+                  },
+                  "company[documents_attributes][1][document_type]": {
+                    "example": "PDF",
+                    "type": "array"
+                  },
+                  "company[documents_attributes][1][file]": {
+                    "format": "binary",
+                    "type": "string",
+                    "example": "file:///home/atm/Downloads/tmd-prod-2021-09-09_00-23-50_UTC.sql"
+                  },
+                  "company[documents_attributes][2][name]": {
+                    "example": "Company PAN number",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][2][document_type]": {
+                    "example": "Image",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][2][file]": {
+                    "format": "binary",
+                    "type": "string",
+                    "example": "file:///home/atm/Downloads/Test-PDF.pdf"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Companies Listing",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJ4VVJ3dkExR0lSWHhkQVNDMlhlRDVBIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IlF4V2ItZG91YThBcUJhQ0w5Y1ZLd2ciLCJleHBpcnkiOiIxNzE4MjA5NDAzIiwidWlkIjoidmFpYmhhdkB5b3BtYWlsLmNvbSJ9",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/companies/1": {
+      "get": {
+        "summary": "Companies Details",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJZOVlZSklEbnFxWERBZlpVMi1HbzVnIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6ImNpcHNMSHVoWGdITGhTR2JxbWUxS0EiLCJleHBpcnkiOiIxNzE4MjAyNzEzIiwidWlkIjoidmFpYmhhdkB5b3BtYWlsLmNvbSJ9",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "patch": {
+        "summary": "Update Company",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJZOVlZSklEbnFxWERBZlpVMi1HbzVnIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6ImNpcHNMSHVoWGdITGhTR2JxbWUxS0EiLCJleHBpcnkiOiIxNzE4MjAyNzEzIiwidWlkIjoidmFpYmhhdkB5b3BtYWlsLmNvbSJ9",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "company[legal_name]": {
+                    "example": "Hitachi",
+                    "type": "string"
+                  },
+                  "company[address]": {
+                    "example": [
+                      "Indore"
+                    ],
+                    "type": "array"
+                  },
+                  "company[email]": {
+                    "example": "hitachi@gmail.com",
+                    "type": "string"
+                  },
+                  "company[phone_number]": {
+                    "example": [
+                      "9876543210"
+                    ],
+                    "type": "array"
+                  },
+                  "company[primary_contact_name]": {
+                    "example": "John Duo",
+                    "type": "string"
+                  },
+                  "company[primary_contact_phone_number]": {
+                    "example": "123456789",
+                    "type": "string"
+                  },
+                  "company[directors_attributes][0][id]": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "company[directors_attributes][0][name]": {
+                    "example": "Prashant",
+                    "type": "array"
+                  },
+                  "company[directors_attributes][0][designation]": {
+                    "example": "ROR Developer",
+                    "type": "string"
+                  },
+                  "company[directors_attributes][0][contact_information]": {
+                    "example": "7225881811",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][id]": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][name]": {
+                    "example": "Certificate of Incorporation",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][document_type]": {
+                    "example": "PDF",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][0][file]": {
+                    "example": "file:///home/atm/Downloads/Test-PDF.pdf",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "company[documents_attributes][1][id]": {
+                    "example": "2",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][1][name]": {
+                    "type": "string",
+                    "example": "GST certificate"
+                  },
+                  "company[documents_attributes][1][document_type]": {
+                    "type": "string",
+                    "example": "PDF"
+                  },
+                  "company[documents_attributes][1][file]": {
+                    "example": "file:///home/atm/Downloads/Test-PDF.pdf",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "company[documents_attributes][2][id]": {
+                    "example": "3",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][2][name]": {
+                    "example": "Company PAN number",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][2][document_type]": {
+                    "example": "Image",
+                    "type": "string"
+                  },
+                  "company[documents_attributes][2][file]": {
+                    "example": "file:///home/atm/Downloads/Test-PDF.pdf",
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "company[legal_name]": {
+                  "contentType": "false"
+                },
+                "company[address]": {
+                  "contentType": "false"
+                },
+                "company[email]": {
+                  "contentType": "false"
+                },
+                "company[phone_number]": {
+                  "contentType": "false"
+                },
+                "company[primary_contact_name]": {
+                  "contentType": "false"
+                },
+                "company[primary_contact_phone_number]": {
+                  "contentType": "false"
+                },
+                "company[directors_attributes][0][name]": {
+                  "contentType": "false"
+                },
+                "company[directors_attributes][0][designation]": {
+                  "contentType": "false"
+                },
+                "company[directors_attributes][0][contact_information]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][0][name]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][0][document_type]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][0][file]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][1][name]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][1][document_type]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][1][file]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][2][name]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][2][document_type]": {
+                  "contentType": "false"
+                },
+                "company[documents_attributes][2][file]": {
+                  "contentType": "false"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Remove Company",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJZOVlZSklEbnFxWERBZlpVMi1HbzVnIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6ImNpcHNMSHVoWGdITGhTR2JxbWUxS0EiLCJleHBpcnkiOiIxNzE4MjAyNzEzIiwidWlkIjoidmFpYmhhdkB5b3BtYWlsLmNvbSJ9",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/kyb_applications": {
+      "get": {
+        "summary": "KYB Applications Listing",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJCY3cyUDljUkZoSk5tbUxqN0I1MG5nIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IlNJekJYSEhyVVNmelNoTHFQUTVOckEiLCJleHBpcnkiOiIxNzE4MjE0ODUxIiwidWlkIjoiY29tcGxpYW5jZV9vZmZpY2VyMkBnbWFpbC5jb20ifQ==",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/kyb_applications/3": {
+      "get": {
+        "summary": "KYB Application Details",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJCY3cyUDljUkZoSk5tbUxqN0I1MG5nIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IlNJekJYSEhyVVNmelNoTHFQUTVOckEiLCJleHBpcnkiOiIxNzE4MjE0ODUxIiwidWlkIjoiY29tcGxpYW5jZV9vZmZpY2VyMkBnbWFpbC5jb20ifQ==",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/kyb_applications/1/approve": {
+      "patch": {
+        "summary": "Approve KYB Application",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJCY3cyUDljUkZoSk5tbUxqN0I1MG5nIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IlNJekJYSEhyVVNmelNoTHFQUTVOckEiLCJleHBpcnkiOiIxNzE4MjE0ODUxIiwidWlkIjoiY29tcGxpYW5jZV9vZmZpY2VyMkBnbWFpbC5jb20ifQ==",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/kyb_applications/1/reject": {
+      "patch": {
+        "summary": "Reject KYB Application Details",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJCY3cyUDljUkZoSk5tbUxqN0I1MG5nIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IlNJekJYSEhyVVNmelNoTHFQUTVOckEiLCJleHBpcnkiOiIxNzE4MjE0ODUxIiwidWlkIjoiY29tcGxpYW5jZV9vZmZpY2VyMkBnbWFpbC5jb20ifQ==",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "rejection_reason": "Invalid PAN Card details"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/DefaultServer/api/v1/companies/1/resubmit_kyb_application": {
+      "patch": {
+        "summary": "Resubmit KYB Application",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "Bearer eyJhY2Nlc3MtdG9rZW4iOiJSc1VfV2xtQ3ZDc2FEQlRGSjU5WndRIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IlJpYVRRZldOQUg4bEpNdmQ1aFF2ZkEiLCJleHBpcnkiOiIxNzE4MjYxNTA2IiwidWlkIjoidmFpYmhhdjFAeW9wbWFpbC5jb20ifQ==",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "servers": []
+}
